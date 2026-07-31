@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Cuenta | TuMarca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #3fa535;
+    --green-dark: #2e7d27;
+    --gray-text: #6b6b6b;
+    --gray-line: #e2e2e2;
+    --gray-bg: #f4f4f4;
+  }
+  * {
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  body {
+    margin: 0;
+    font-family: "M PLUS Rounded 1c", Arial, Helvetica, sans-serif;
+    color: #333;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    border-bottom: 1px solid var(--gray-line);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+  }
+  .top-bar {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 32px 0 20vw;
+    width: 100%;
+  }
+  .btn-pill {
+    display: inline-block;
+    font: inherit;
+    background: var(--green);
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px 0 0;
+    padding: 0 20px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-pill:hover { background: var(--green-dark); }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 32px 12px 20vw;
+    width: 100%;
+  }
+  .logo-row .label {
+    font-size: 26px;
+    color: var(--green-dark);
+    font-weight: 300;
+  }
+  .logo-row .sep { color: var(--gray-line); font-size: 24px; }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .brand svg { width: 26px; height: 26px; }
+
+  /* ---------- MAIN / BODY ---------- */
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 36px 20px 80px;
+  }
+  .card {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  h1.title {
+    font-weight: bold;
+    color: var(--green-dark);
+    font-size: 34px;
+    margin: 0 0 16px;
+  }
+
+  .subtext {
+    color: var(--gray-text);
+    font-size: 14px;
+    margin: -24px 0 26px;
+  }
+
+  .field {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  .field label {
+    display: block;
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  .field label .req { color: var(--green); }
+  .field input {
+    width: 100%;
+    font: inherit;
+    border: none;
+    border-bottom: 1px solid #b7b7b7;
+    padding: 6px 2px 10px;
+    font-size: 15px;
+    outline: none;
+    background: transparent;
+  }
+  .field input::placeholder {
+    color: #9a9a9a;
+    opacity: 1;
+  }
+  .field input:focus::placeholder {
+    color: transparent;
+  }
+  .field input:focus { border-bottom: 1px solid var(--green); }
+
+  .verify-box {
+    border: 1px solid var(--gray-line);
+    border-radius: 4px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .verify-left { display: flex; align-items: center; gap: 12px; }
+  .check-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .check-circle svg { width: 14px; height: 14px; }
+  .verify-left span { font-size: 15px; color: #333; }
+  .verify-right { text-align: right; }
+  .verify-right .brand-mini {
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.5px;
+  }
+  .verify-right .links {
+    font-size: 10px;
+    color: #999;
+    margin-top: 2px;
+  }
+  .verify-right .links a { color: #999; text-decoration: underline; }
+
+  .btn-continue {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    margin-bottom: 34px;
+  }
+
+  .or-text {
+    color: var(--gray-text);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .providers {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .provider-circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    overflow: hidden;
+    font: inherit;
+  }
+  .provider-circle img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .provider-1 { background: #e2574c; }
+  .provider-1 img {
+    object-fit: cover;
+    transform: scale(0.8);
+  }
+  .provider-2 { background: #4285c9; }
+  .provider-3 { background: #2b2b2b; }
+  .provider-3 img {
+    width: 112%;
+    height: 112%;
+    object-fit: cover;
+    transform: scale(1.35);
+  }
+
+  .signup-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--gray-text);
+    flex-wrap: wrap;
+  }
+  .signup-copy {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.05;
+    text-align: right;
+  }
+  .btn-outline {
+    display: inline-block;
+    font: inherit;
+    background: #fff;
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 7px 45px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-outline:hover { background: #f2f9f1; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    position: relative;
+    background: var(--gray-bg);
+    padding-top: 70px;
+  }
+  footer::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: #fff;
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  }
+  .footer-logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+  .footer-logo .brand { font-size: 22px; }
+  .footer-links {
+    border-top: 1px solid #e5e5e5;
+    padding: 18px 24px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .footer-links a {
+    color: var(--green-dark);
+    text-decoration: none;
+  }
+  .footer-links a:hover { text-decoration: underline; }
+  .footer-links .divider { color: #bbb; }
+
+  @media (max-width: 480px) {
+    .logo-row { padding: 4px 20px 16px; }
+    .top-bar { padding: 12px 20px; }
+    h1.title { font-size: 28px; font-weight: bold; margin-bottom: 14px; color: var(--green-dark); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top-bar">
+    <a href="#" class="btn-pill">Iniciar sesión</a>
+  </div>
+  <div class="logo-row">
+    <span class="label">Mi cuenta | </span>
+    <img src="../img/logo-epm.svg" alt="Logo EPM" width="120">
+    <span class="sep" >|</span>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <h1 class="title">Iniciar sesión</h1>
+    <p class="subtext">Accede con tu correo para continuar.</p>
+
+    <form onsubmit="return false;">
+      <div class="field">
+        <input type="email" id="email" name="email" placeholder="Correo electrónico*" autocomplete="off">
+      </div>
+
+      <div class="verify-box">
+        <img src= "../img/cloudDEMo.gif" alt="Verificación" width="260">
+        <!-- <div class="verify-left">
+          <span class="check-circle">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>Verificado</span>
+        </div>
+        <div class="verify-right">
+          <div class="brand-mini">SEGURIDAD</div>
+          <div class="links"><a href="#">Privacidad</a> · <a href="#">Ayuda</a></div>
+        </div> -->
+      </div>
+
+      <button type="button" class="btn-pill btn-continue">Iniciar sesión</button>
+    </form>
+
+    <p class="or-text">O inicia sesión con una de las siguientes cuentas.</p>
+
+    <div class="providers">
+      <button class="provider-circle provider-1" title="Correo" type="button">
+        <img src="../img/google-symbol-logo-white-design-illustration-with-red-background-free-vector.jpg" alt="Correo">
+      </button>
+      <button class="provider-circle provider-2" title="Nube" type="button">
+        <img src="../img/logotipo-de-windows-en-fondo-azul-plano-forma-d-del-aislado-con-ilustración-sombra-242934112.webp" alt="Nube">
+      </button>
+      <button class="provider-circle provider-3" title="Cuenta" type="button">
+        <img src="../img/logotipo-de-manzana-sobre-fondo-negro-inc-en-blanco-iluminado-apple-es-una-corporación-multinacional-estadounidense-el-fabricante-206447310.webp" alt="Cuenta">
+      </button>
+    </div>
+
+    <div class="signup-row">
+      <span class="signup-copy"><span>¿No tienes</span><span>cuenta?</span></span>
+      <a href="#" class="btn-outline">Registrarme</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">
+    <span class="brand">
+      <img src="../img/logo-epm.svg" alt="Logo EPM" width="70">
+    </span>
+  </div>
+  <div class="footer-links">
+    <a href="#">Política de protección de datos personales</a>
+    <span class="divider">|</span>
+    <span>Iniciar sesión © Todos los derechos reservados</span>
+    <span class="divider">|</span>
+    <a href="#">Términos y condiciones del sitio</a>
+  </div>
+</footer>
+
+</body>
+</html>
